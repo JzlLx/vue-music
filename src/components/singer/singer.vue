@@ -1,6 +1,6 @@
 <template>
     <div class="singer">
-
+      <list-view :data="singers"></list-view>
     </div>
 </template>
 
@@ -8,11 +8,14 @@
 import { getSingerList } from 'api/singer'
 import { ERR_OK } from 'api/config'
 import Singer from 'common/js/singer'
+import ListView from 'base/listview/listview'
 export default {
+  components: {
+    ListView
+  },
   data () {
     return {
-      singers: [],
-      // url: `//y.gtimg.cn/music/photo_new/T001R150x150M000${item.url}.jpg?max_age=2592000`
+      singers: []
     }
   },
   methods: {
@@ -20,8 +23,8 @@ export default {
       getSingerList().then(res => {
         if(res.code === ERR_OK){
           this.singers = res.data.list
-          // console.log(this.singers)
-          console.log(this.formatSingerList(this.singers))
+          // console.log(this.formatSingerList(this.singers))
+          this.singers = this.formatSingerList(this.singers)
         }
       })
     },
