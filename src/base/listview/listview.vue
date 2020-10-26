@@ -94,7 +94,6 @@ export default {
 
 <style scoped lang="stylus">
 @import "~common/stylus/variable"
-
 .listview {
   position relative
   width 100%
